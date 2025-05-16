@@ -6,7 +6,7 @@ const Links = () => {
     return (<section>
         <Heading as="h2" size='lg' color='teal'>De la doc 📖</Heading>
         <Box margin='0.5rem 0 0 0'>
-            <Text>Si tu ne sais pas comment ajouter ta signature HTML voilà quelques lien utiles</Text>
+            <Text>Si tu ne sais pas comment ajouter ta signature HTML voilà quelques liens utiles</Text>
         </Box>
         <UnorderedList>
             <ListItem>
