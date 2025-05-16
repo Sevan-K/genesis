@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/genesis/static/css/main.7c0fd95e.css",
+    "main.js": "/genesis/static/js/main.2fc52d67.js",
+    "static/js/453.7ec4ec1c.chunk.js": "/genesis/static/js/453.7ec4ec1c.chunk.js",
+    "static/media/logoDsi.png": "/genesis/static/media/logoDsi.9a004004b5d682109ddd.png",
+    "index.html": "/genesis/index.html",
+    "main.7c0fd95e.css.map": "/genesis/static/css/main.7c0fd95e.css.map",
+    "main.2fc52d67.js.map": "/genesis/static/js/main.2fc52d67.js.map",
+    "453.7ec4ec1c.chunk.js.map": "/genesis/static/js/453.7ec4ec1c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7c0fd95e.css",
+    "static/js/main.2fc52d67.js"
+  ]
+}
