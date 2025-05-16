@@ -9,6 +9,7 @@ main {
     justify-content: center;
     max-width: 612px;
     margin: auto;
+    margin-bottom: 2rem;
 }
 
 main > section,

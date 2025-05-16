@@ -1,8 +1,12 @@
-import React, { FormEvent, useMemo, useState } from 'react';
-import { Box, Button, Center, Checkbox, Flex, FormControl, FormLabel, Input, Textarea, useClipboard } from "@chakra-ui/react";
-import { buildHtmlSignature } from '../utils/buildHtmlSignature';
+import { FormEvent,  useState } from 'react';
+import { Box, Button, Center, Checkbox, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { FormData } from '@/Types/FormData';
 
-const Form = () => {
+interface FormProps {
+    handleSubmit: (event: FormEvent<HTMLFormElement>, formData: FormData) => void;
+}
+
+const Form = ({ handleSubmit }: FormProps) => {
     const [fullname, setFullame] = useState<string | undefined>(undefined);
     const [job, setJob] = useState<string | undefined>(undefined);
     const [building, setBuilding] = useState<string | undefined>(undefined);
@@ -10,26 +14,14 @@ const Form = () => {
     const [phoneNumber, setPhoneNumber] = useState<string | undefined>(undefined);
     const [email, setEmail] = useState<string | undefined>(undefined);
     const [useAlt, setUseAlt] = useState<boolean>(false);
-    const [htmlSignature, setHtmlSIgnature] = useState<string | undefined>(undefined);
-
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log(`bousin :  ${useAlt}`)
-        if (fullname && job && email) {
-            setHtmlSIgnature(buildHtmlSignature({ fullname, job, building, address, phoneNumber, email, useAlt }));
-        }
-    };
-
-    const placeholder = 'text to be copied...'
-    const { onCopy, value, setValue, hasCopied } = useClipboard('')
 
 
     return (
         <>
             <section>
-                <form onSubmit={handleSubmit} >
+                <form onSubmit={(event) => handleSubmit(event, { fullname, job, building, address, phoneNumber, email, useAlt })} >
                     <FormControl isRequired>
-                        <FormLabel>Nom Prénom</FormLabel>
+                        <FormLabel>Nom & Prénom</FormLabel>
                         <Input type='text' value={fullname} onChange={(event) => setFullame(event.target.value)} placeholder='Monkey D. Luffy' />
                     </FormControl>
                     <FormControl isRequired>
@@ -61,28 +53,12 @@ const Form = () => {
                             colorScheme='teal'
                             type='submit'
                         >
-                            Générer
+                            Générer 🚀
                         </Button>
                     </Center>
                 </form>
             </section>
 
-            {htmlSignature && <section>
-                <Center>
-                    <div dangerouslySetInnerHTML={{ __html: htmlSignature }} />
-                </Center>
-                <Flex mb={2} margin='2rem 0 0 0'>
-                    <Textarea
-                        value={htmlSignature}
-                        placeholder='Here is a sample placeholder'
-                        size='sm'
-                        height='12rem'
-                        colorScheme='teal'
-                        mr={2}
-                    />
-                    <Button onClick={onCopy}>{hasCopied ? 'Copied!' : 'Copy'}</Button>
-                </Flex>
-            </section>}
         </>
     );
 }
